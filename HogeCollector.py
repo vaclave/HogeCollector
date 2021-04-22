@@ -1,4 +1,3 @@
-
 import random
 import arcade
 import os
@@ -42,7 +41,6 @@ class MyGame(arcade.Window):
 
         # zembahk edit
         self.total_time = 0.0
-
 
     def setup(self):
         """ Set the value of the variable """
@@ -104,7 +102,7 @@ class MyGame(arcade.Window):
         # Figure out our output
         output = f"Time: {seconds:02d}"
         # zemabhk edit
-        winTime = f"Won in {self.win_time:.6f} seconds"
+        winTime = f"Won in {self.win_time:.6f} seconds. Press spacebar to restart."
         
         # Output the timer text.
         # zembahk edit
@@ -113,6 +111,13 @@ class MyGame(arcade.Window):
         else:
             arcade.draw_text(winTime, 10, 100, arcade.color.WHITE, 26)
             
+    def on_key_press(self, key, key_modifiers):
+        """
+        Called whenever a key on the keyboard is pressed.
+        """
+        if self.win_time != 0 and key == 32:
+                self.setup()
+
     def on_update(self, delta_time):
         """
         All the logic to move, and the game logic goes here.
